@@ -1,0 +1,16 @@
+{
+  "expo": {
+    "name": "myfitspot",
+    "slug": "myfitspot",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "dea6948d-bd5e-4c00-bc26-3c6e757282c9"
+      }
+    }
+  },
+  "name": "myfitspot"
+}
