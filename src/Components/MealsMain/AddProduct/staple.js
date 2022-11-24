@@ -4,7 +4,6 @@ import {
   Text,
   View,
   TouchableOpacity,
-  Picker,
   Platform,
   SectionList,
   StatusBar,

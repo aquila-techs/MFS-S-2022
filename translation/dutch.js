@@ -30,6 +30,13 @@ export default {
 
   WorkoutDescription: "Uitleg Training",
 
+  commonQuestion1Heading: '1. Wat houd het in om pro te zijn?',
+  commonQuestion1Desc: "Je krijgt toegang tot al onze trainingsprogramma's en recepten met iedere week nieuwe uploads.",
+
+  commonQuestion1Heading2: '2. Hoe kan ik mijn abonnement stopzetten?',
+  commonQuestion1Desc2: "Je kan je abonnement op ieder moment eenvoudig stopzetten via de knop 'My Fit Spot Pro ontgrendelen', bij de instellingen. Je kan My Fit Spot Pro blijven gebruiken tot de periode van afloop (ook na stopzetting).",
+
+
   P:'E',
   K:'K',
   V:'V',
@@ -98,13 +105,13 @@ export default {
   // Packages
 
   basic:'Basis abonnement',
-  perMonth: 'Maandelijks',
+  perMonth: '1 maand pro',
 
   standard:'Standaard abonnement',
-  perMonthStandard: '6 maanden',
+  perMonthStandard: '6 maanden pro',
 
   professional:'Pro-abonnement',
-  perMonthProfessional: '1 jaar',
+  perMonthProfessional: '12 maanden pro',
 
   MonthsPro: '49,99€ Pro 6 maanden',
   MonthsProMonth: '(8,3€ /maand)',

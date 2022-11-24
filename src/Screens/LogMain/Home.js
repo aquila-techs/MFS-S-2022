@@ -36,83 +36,22 @@ import '../../../node_modules/moment/locale/nl';
 import '../../../node_modules/moment/locale/es';
 import _ from "lodash";
 import renderIf from "render-if";
-// import i18n from 'react-native-i18n';
 import i18n from '../../../translation'
 import Colors from "../../Theme/Colors";
-import autoMergeLevel1 from "redux-persist/es/stateReconciler/autoMergeLevel1";
-import {
-  WheelPicker,
-  TimePicker,
-  DatePicker,
-} from "react-native-wheel-picker-android";
+// import {
+//   WheelPicker,
+// } from "react-native-wheel-picker-android";
+import WheelPicker from 'react-native-wheely';
 import Responsive from "react-native-lightweight-responsive";
 import { useNavigation } from "@react-navigation/native";
 import {
-  TotalDailyCalories,
   DailyCaloriesBurn,
-  Getvalue,
   userweightaction,
 } from "../../redux/actions";
 import { CommonImage } from "./CommonImage";
 import { AppIcon } from "../../Assets/Images";
 let cal;
 const TODAYCAL = [];
-
-const distanceUnitData = ["km", "mi"];
-const mData = [".0", ".1", ".2", ".3", ".4", ".5", ".6", ".7", ".8", ".9"];
-
-const kmData = [
-  "1",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-  "10",
-  "11",
-  "12",
-  "13",
-  "14",
-  "15",
-  "16",
-  "17",
-  "18",
-  "19",
-  "20",
-];
-
-
-function ListItemRecentActivity({ item }) {
-  return (
-    <View>
-      <View
-        style={{
-          width: "100%",
-          flexDirection: "row",
-          marginBottom: "4%",
-          marginLeft: "5%",
-          marginRight: "5%",
-          marginTop: "4%",
-        }}
-      >
-        <Image
-          style={{ width: 20, height: 20, marginRight: "3%" }}
-          source={require("../../Assets/starIcon.png")}
-        />
-        <View style={{}}>
-          <Text style={{ fontSize: 15, color: "#000" }}>{item?.name}</Text>
-        </View>
-
-        <View style={{ marginRight: "10%", marginLeft: "auto" }}>
-          <IconF name="angle-right" size={25} color="rgba(0,0,0,0.3)" />
-        </View>
-      </View>
-    </View>
-  );
-}
 
 function ListItemActivity({ item }) {
   return (
@@ -148,45 +87,17 @@ function ListItemActivity({ item }) {
 function Home(props) {
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const { burncalories, totalcalories, Userweightdata } = useSelector(
+  const { totalcalories, Userweightdata } = useSelector(
     (state) => state.featuse
   );
-  const list1 = {
-    id: 0,
-    acitivityName: "Shoes",
-    duration: "0 min",
-    distance: ".0 km",
-    date:
-      Moment(
-        new Date(
-          new Date().getFullYear(),
-          new Date().getMonth(),
-          new Date().getDate()
-        )
-      ).locale(i18n.locale == undefined ? 'nl' : i18n.locale).format("dddd") +
-      ", " +
-      Moment(
-        new Date(
-          new Date().getFullYear(),
-          new Date().getMonth(),
-          new Date().getDate()
-        )
-      ).locale(i18n.locale == undefined ? 'nl' : i18n.locale).format("DD MMM"),
-  };
+  const [selectedIndex, setSelectedIndex] = useState(0);
   const [modalVisible, setModalVisible] = useState(false);
-  // const [activityList, setActivityList] = useState(list1);
-  // const [collapsed, setCollapsed] = useState(false);
-  // const [collapsedDuration, setCollapsedDuration] = useState(false);
   const [weightKG, setWeightKG] = useState(0);
   const [weightLB, setWeightLB] = useState(0);
-  const [fat, setfat] = useState(0);
-  const [protein, setprotein] = useState(0);
-  const [carb, setcarb] = useState(0);
   const [unit, setUnit] = useState("kg");
   const [Activitycolor, setactcolor] = useState("");
   const [todaycolor, settodaycolor] = useState("#7AD319");
   const [mealcolor, setmealcolor] = useState("");
-  const [burnedcal, setburnedcal] = useState("");
   const [TotalCal, settotalcal] = useState(Math.ceil(props?.totalDailyKCal));
   const [Language, setLanguage] = useState(props);
   const [WHEEL, setWheel] = useState([]);
@@ -348,8 +259,6 @@ function Home(props) {
   const CaloriesCounter = async (value) => {
     dispatch(DailyCaloriesBurn(value));
     try {
-      let counter = isNaN(totalcalories) ? 0 : totalcalories - value;
-      // dispatch(TotalDailyCalories(counter));
       settodaycolor("#7AD319"), onTabSelect(1), setmealcolor("black");
       setactcolor("black");
       setactivityShow(false);
@@ -357,8 +266,6 @@ function Home(props) {
       console.log(error);
     }
   };
-
-  useEffect(() => { }, [burncalories]);
 
   const updation = (value) => {
 
@@ -420,22 +327,10 @@ function Home(props) {
 
   useEffect(() => {
     dailyneutrions();
-
   }, [cal]);
-
-  useEffect(() => {
-
-  }, []);
 
   const dailyneutrions = async () => {
     TodayCalFetchCalories()
-    try {
-      setfat(Math.ceil(totalcalories * 0.15));
-      setcarb(Math.ceil(totalcalories * 0.5));
-      setprotein(Math.ceil(totalcalories * 0.25));
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   const onTabSelect = (whichDay) => {
@@ -450,9 +345,6 @@ function Home(props) {
           setloading(true);
       }
 
-      // this._textInput1.setNativeProps({style: {color: '#7AD319'}});
-      // this._textInput2.setNativeProps({style: {color: "rgba(0,0,0,0.5)"}});
-      // this._textInput3.setNativeProps({style: {color: "rgba(0,0,0,0.5)"}});
     } else if (whichDay == 1) {
       {
         setbottomBorder1(0),
@@ -463,9 +355,7 @@ function Home(props) {
           setmultiple(false),
           setloading(true);
       }
-      // this._textInput2.setNativeProps({style: {color: '#7AD319'}});
-      // this._textInput1.setNativeProps({style: {color: "rgba(0,0,0,0.5)"}});
-      // this._textInput3.setNativeProps({style: {color: "rgba(0,0,0,0.5)"}});
+
     } else {
       {
         setbottomBorder1(0),
@@ -476,9 +366,7 @@ function Home(props) {
           setmultiple(false),
           setloading(true);
       }
-      // this._textInput3.setNativeProps({style: {color: '#7AD319'}});
-      // this._textInput1.setNativeProps({style: {color: "rgba(0,0,0,0.5)"}});
-      // this._textInput2.setNativeProps({style: {color: "rgba(0,0,0,0.5)"}});
+
     }
   };
 
@@ -564,14 +452,9 @@ function Home(props) {
         if (responseJson.status == true) {
 
           const updateFeatureData = {
-            // userGender: _props.userGender,
-            // userAge: _props.userAge,
-            // userHeight: _props.userWeight,
             userWeight: parseInt(data),
             RemainActivity: _props.userdetail?.RemainActivity,
             WorkoutRemainActivity: _props.userdetail?.WorkoutRemainActivity
-            // activityLevel: _props.activityLevel,
-            // EBF: _props.EBF,
           };
 
           setloading(true);
@@ -605,7 +488,6 @@ function Home(props) {
       weight: parseInt(data),
     };
 
-    alert(JSON.stringify(obj))
     return;
     _props.setUserDetail(obj);
     _props.setWeightAction(parseInt(data)).then((status) => {
@@ -648,7 +530,6 @@ function Home(props) {
   }, [totalcalories]);
 
   const Checklanguage = async () => {
-    const check = await AsyncStorage.getItem('LANGUAGE')
     const MYDATE = new Date();
     setWheel([
 
@@ -679,102 +560,6 @@ function Home(props) {
       i18n.t('Sunday') +
       ", " +
       Moment(MYDATE).startOf('week').weekday(6).format("DD MMM"),
-
-      // Moment(
-      //   new Date(
-      //     new Date().getFullYear(),
-      //     new Date().getMonth(),
-      //     new Date().getDate() - 5
-      //   )
-      // ).locale(i18n.locale == undefined ? 'nl' : i18n.locale).format("dddd") +
-      // ", " +
-      // Moment(
-      //   new Date(
-      //     new Date().getFullYear(),
-      //     new Date().getMonth(),
-      //     new Date().getDate() - 5
-      //   )
-      // ).format("DD MMM"),
-
-      // Moment(
-      //   new Date(
-      //     new Date().getFullYear(),
-      //     new Date().getMonth(),
-      //     new Date().getDate() - 4
-      //   )
-      // ).locale(i18n.locale == undefined ? 'nl' : i18n.locale).format("dddd") +
-      // ", " +
-      // Moment(
-      //   new Date(
-      //     new Date().getFullYear(),
-      //     new Date().getMonth(),
-      //     new Date().getDate() - 4
-      //   )
-      // ).format("DD MMM"),
-
-      // Moment(
-      //   new Date(
-      //     new Date().getFullYear(),
-      //     new Date().getMonth(),
-      //     new Date().getDate() - 3
-      //   )
-      // ).locale(i18n.locale == undefined ? 'nl' : i18n.locale).format("dddd") +
-      // ", " +
-      // Moment(
-      //   new Date(
-      //     new Date().getFullYear(),
-      //     new Date().getMonth(),
-      //     new Date().getDate() - 3
-      //   )
-      // ).format("DD MMM"),
-
-      // Moment(
-      //   new Date(
-      //     new Date().getFullYear(),
-      //     new Date().getMonth(),
-      //     new Date().getDate() - 2
-      //   )
-      // ).locale(i18n.locale == undefined ? 'nl' : i18n.locale).format("dddd") +
-      // ", " +
-      // Moment(
-      //   new Date(
-      //     new Date().getFullYear(),
-      //     new Date().getMonth(),
-      //     new Date().getDate() - 2
-      //   )
-      // ).format("DD MMM"),
-
-      // Moment(
-      //   new Date(
-      //     new Date().getFullYear(),
-      //     new Date().getMonth(),
-      //     new Date().getDate() - 1
-      //   )
-      // ).locale(i18n.locale == undefined ? 'nl' : i18n.locale).format("dddd") +
-      // ", " +
-      // Moment(
-      //   new Date(
-      //     new Date().getFullYear(),
-      //     new Date().getMonth(),
-      //     new Date().getDate() - 1
-      //   )
-      // ).format("DD MMM"),
-
-      // Moment(
-      //   new Date(
-      //     new Date().getFullYear(),
-      //     new Date().getMonth(),
-      //     new Date().getDate()
-      //   )
-      // ).locale(i18n.locale == undefined ? 'nl' : i18n.locale).format("dddd") +
-      // ", " +
-      // Moment(
-      //   new Date(
-      //     new Date().getFullYear(),
-      //     new Date().getMonth(),
-      //     new Date().getDate()
-      //   )
-      // ).format("DD MMM"),
 
     ])
     setLanguage(i18n.locale == undefined ? 'nl' : i18n.locale)
@@ -1506,34 +1291,6 @@ function Home(props) {
 
                       </View>
 
-                      {/* <View
-                        style={{
-                          flexDirection: "column",
-                          top: '50%',
-                          position: 'absolute',
-                          right: '10%',
-
-                        }}
-                      >
-                        <Text
-                          style={{
-                            color: "rgba(256,256,256,0.7)",
-                            fontSize: 19,
-                            textAlign: "center",
-                          }}
-                        >
-                          {burncalories.toFixed(2) ?? "00"}
-                        </Text>
-                        <Text
-                          style={{
-                            color: "rgba(256,256,256,0.7)",
-                            fontSize: 14,
-                            textAlign: "center",
-                          }}
-                        >
-                          {i18n.t('BURNED')}
-                        </Text>
-                      </View> */}
 
                     </View>
 
@@ -1919,7 +1676,15 @@ function Home(props) {
                       {" "}
                     </Text>
                   </TouchableOpacity>
+
+                  {/* <WheelPicker
+                      selectedIndex={selectedIndex}
+                      options={WHEEL}
+                      onChange={(index) => setSelectedIndex(index)}
+                    /> */}
+
                   <ScrollView showsVerticalScrollIndicator={false}>
+
                     <View
                       style={{
                         flexDirection: "row",
@@ -2096,13 +1861,21 @@ function Home(props) {
                           }}
                         >
                           <WheelPicker
+                            selectedIndex={selectedItemDay}
+                            options={WHEEL}
+                            onChange={(index) => {
+                              setdateToday(WHEEL[index]),
+                                setselectedItemDay(index);
+                            }}
+                          />
+                          {/* <WheelPicker
                             selectedItem={selectedItemDay}
                             data={WHEEL}
                             onItemSelected={(index) => {
                               setdateToday(WHEEL[index]),
                                 setselectedItemDay(index);
                             }}
-                          />
+                          /> */}
                         </View>
                       </View>
                     )}
@@ -2198,22 +1971,38 @@ function Home(props) {
                           }}
                         >
                           <WheelPicker
+                            selectedIndex={durationHours}
+                            options={hourData}
+                            onChange={(index) => {
+                              setselectedItemHours(hourData[index]),
+                                setdurationHours(index);
+                            }}
+                          />
+                          <WheelPicker
+                            selectedIndex={durationMinutes}
+                            options={minuteData}
+                            onChange={(index) => {
+                              setselectedItemMinutes(minuteData[index]),
+                                setdurationMinutes(index);
+                            }}
+                          />
+                          {/* <WheelPicker
                             selectedItem={durationHours}
                             data={hourData}
                             onItemSelected={(index) => {
                               setselectedItemHours(hourData[index]),
                                 setdurationHours(index);
                             }}
-                          />
+                          /> */}
 
-                          <WheelPicker
+                          {/* <WheelPicker
                             selectedItem={durationMinutes}
                             data={minuteData}
                             onItemSelected={(index) => {
                               setselectedItemMinutes(minuteData[index]),
                                 setdurationMinutes(index);
                             }}
-                          />
+                          /> */}
                         </View>
                       </View>
                     )}
@@ -2290,3 +2079,6 @@ export default connect(
 )(Home);
 
 // export default Home;
+
+
+

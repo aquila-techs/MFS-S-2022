@@ -388,67 +388,13 @@ class PackageMeal extends Component {
           <View style={{ paddingHorizontal: '3%' }}>
 
             <StripeProvider
-              publishableKey="pk_test_51FMVPnBsGswEgNabZmzIsj0Wfm70T55gJpUeJHpehwSTlGfwZFdG72qUyuG3NooBq9XDE11gOUmZRAOzckkFNiEK00THKSIghZ"
+              publishableKey="pk_live_wDBLfMiWfa7KqDM0eKlOSSDi00HVCyS3i0"
+              // publishableKey="pk_test_sl32cMGauibzgl0RiUusMOzZ00LZikpaB6"
+              merchantIdentifier="merchant.com.myfitspot"
             >
               <Payment props={this.props} userName={this.props.userName} userEmail={this.props.userEmail} navigation={this.props.navigation} token={this.props.token} />
 
-
-              <View style={{ marginTop: 10, borderWidth: 1, borderColor: '#eeeeee', borderRadius: 10, padding: 15, paddingTop: 30, paddingBottom: 30 }}>
-                <Text style={{ alignSelf: 'center', fontWeight: 'bold', fontSize: 20 }}>Terms of Service Privacy Policy</Text>
-                <Text style={{ textAlign: 'justify', alignSelf: 'center', marginTop: 20 }}>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-                  molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-                  numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-                  optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
-                  obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
-                  nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
-                  tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
-                  quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos
-                  sapiente officiis modi at sunt excepturi expedita sint? Sed quibusdam
-                  recusandae alias error harum maxime adipisci amet laborum.
-                </Text>
-              </View>
-
-              <View style={{ marginTop: 10, borderWidth: 1, borderColor: '#eeeeee', borderRadius: 10, padding: 15, paddingTop: 30, paddingBottom: 30 }}>
-                <Text style={{ alignSelf: 'center', fontWeight: 'bold', fontSize: 20, marginBottom: 10 }}>Join millions of happy users</Text>
-
-                <View
-                  style={{
-                    width: '100%',
-                    flexDirection: 'row',
-                    justifyContent: 'center',
-                  }}>
-                  <Image
-                    style={{ width: 30, height: 30, margin: 8 }}
-                    source={require('../../../Assets/starIcon.png')}
-                    resizeMode="contain"
-                  />
-                  <Image
-                    style={{ width: 30, height: 30, margin: 8 }}
-                    source={require('../../../Assets/starIcon.png')}
-                    resizeMode="contain"
-                  />
-                  <Image
-                    style={{ width: 30, height: 30, margin: 8 }}
-                    source={require('../../../Assets/starIcon.png')}
-                    resizeMode="contain"
-                  />
-                  <Image
-                    style={{ width: 30, height: 30, margin: 8 }}
-                    source={require('../../../Assets/starIcon.png')}
-                    resizeMode="contain"
-                  />
-                  <Image
-                    style={{ width: 30, height: 30, margin: 8 }}
-                    source={require('../../../Assets/starIcon.png')}
-                    resizeMode="contain"
-                  />
-                </View>
-
-                <Text style={{ alignSelf: 'center', fontSize: 18, marginTop: 10 }}>+100,000 ratings</Text>
-              </View>
-
-              <View style={{ marginTop: 10, borderWidth: 1, borderColor: '#eeeeee', borderRadius: 10, padding: 15, paddingTop: 30, paddingBottom: 30 }}>
+              {/* <View style={{ marginTop: 10, borderWidth: 1, borderColor: '#eeeeee', borderRadius: 10, padding: 15, paddingTop: 30, paddingBottom: 30 }}>
 
                 <Text style={{ alignSelf: 'center', fontWeight: 'bold', fontSize: 22, marginBottom: 10 }}>User Successes</Text>
                 <Text style={{ alignSelf: 'center', fontSize: 17 }}>Benedikt, <Text style={{ color: Colors.green }}>35</Text></Text>
@@ -458,15 +404,16 @@ class PackageMeal extends Component {
                   style={{
                     width: '100%',
                     flexDirection: 'row',
-                    justifyContent: 'center',
-                    marginTop: 10
+                    marginTop: 0
                   }}>
                   <Image
-                    style={{ width: '50%', height: hp(150) }}
+                    resizeMode='contain'
+                    style={{ width: '50%', height: hp(30) }}
                     source={require('../../../Assets/Images/sucessDay1.png')}
                   />
                   <Image
-                    style={{ width: '50%', height: hp(152) }}
+                    resizeMode='contain'
+                    style={{ width: '50%', height: hp(30.5) }}
                     source={require('../../../Assets/Images/sucessDay30.png')}
                   />
                 </View>
@@ -477,7 +424,35 @@ class PackageMeal extends Component {
                   weight."
                 </Text>
 
+              </View> */}
+
+              <View style={{ marginTop: 10, borderWidth: 1, borderColor: '#eeeeee', borderRadius: 10, padding: 15, paddingTop: 30, paddingBottom: 30 }}>
+
+                <Text style={{ alignSelf: 'center', fontWeight: 'bold', fontSize: 22, marginBottom: 10 }}>User Successes</Text>
+                <Text style={{ alignSelf: 'center', fontSize: 17 }}>Bryan</Text>
+                <Text style={{ alignSelf: 'center', fontSize: 17, marginTop: 5 }}>Lost <Text style={{ color: Colors.green }}>20</Text> KG</Text>
+
+                <View
+                  style={{
+                    width: '100%',
+                    flexDirection: 'row',
+                    marginTop: 0
+                  }}>
+                  <Image
+                    resizeMode='contain'
+                    style={{ width: '100%', height: hp(40), marginTop: 20 }}
+                    source={require('../../../Assets/Images/successDay1.jpeg')}
+                  />
+                </View>
+
+                <Text style={{ textAlign: 'justify', alignSelf: 'center', fontSize: 16, marginTop: 10 }}>
+                  "I've done many diets before where I would have only shakes
+                  and replacements. But now I'm just eating normal and losing
+                  weight."
+                </Text>
+
               </View>
+
 
               <View style={{ marginTop: 10, borderWidth: 1, borderColor: '#eeeeee', borderRadius: 10, padding: 15, paddingTop: 30, paddingBottom: 30 }}>
                 <Text style={{ alignSelf: 'center', fontWeight: 'bold', fontSize: 22, marginBottom: 10 }}>Common Questions</Text>
@@ -496,7 +471,7 @@ class PackageMeal extends Component {
                       marginBottom: '1%',
                       fontWeight: 'bold'
                     }}>
-                    What does Pro include?
+                    {i18n.t('commonQuestion1Heading')}
                   </Text>
                   <Text
                     style={{
@@ -505,9 +480,7 @@ class PackageMeal extends Component {
                       marginBottom: '4%',
                       marginTop: 5
                     }}>
-                    My Fit Pro includes all workout programs adaptef to your
-                    fitness level, custom meal plans with hundreds of recipes, and
-                    a convenient shopping list.
+                    {i18n.t('commonQuestion1Desc')}
                   </Text>
                 </View>
 
@@ -525,7 +498,7 @@ class PackageMeal extends Component {
                       marginBottom: '1%',
                       fontWeight: 'bold'
                     }}>
-                    Can I cancel anytime?
+                    {i18n.t('commonQuestion1Heading2')}
                   </Text>
                   <Text
                     style={{
@@ -534,41 +507,7 @@ class PackageMeal extends Component {
                       marginBottom: '4%',
                       marginTop: 5
                     }}>
-                    Yes, If you have a trial subscription and you're within the
-                    trial period,then you may cancel at any time and you will not
-                    be charged. Canceling a subscription after having purchased it
-                    will still allow you to have full access to all Pro features
-                    untill the end of the subscription period.
-                  </Text>
-                </View>
-
-                <View
-                  style={{
-                    width: '90%',
-                    marginLeft: '7%',
-                    marginTop: '7%',
-                    marginRight: '4%',
-                  }}>
-                  <Text
-                    style={{
-                      fontSize: 18,
-                      color: '#000',
-                      marginBottom: '1%',
-                      fontWeight: 'bold'
-                    }}>
-                    What do I need to get started?
-                  </Text>
-                  <Text
-                    style={{
-                      fontSize: 15,
-                      color: '#000000',
-                      marginBottom: '4%',
-                      marginTop: 5
-                    }}>
-                    Motivation, My Fit workouts are designed so that you can do
-                    them at home without any specialized equipment. Our resipes
-                    don't require gourment ingredients or uncommon kitchen
-                    appliances either!
+                    {i18n.t('commonQuestion1Desc2')}
                   </Text>
                 </View>
 

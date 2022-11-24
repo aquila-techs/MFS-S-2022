@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
@@ -20,19 +20,19 @@ import {
 import renderIf from 'render-if';
 import styles from './Styles';
 import Colors from '../../../Theme/Colors';
-import {Directions, ScrollView} from 'react-native-gesture-handler';
+import { Directions, ScrollView } from 'react-native-gesture-handler';
 import IconM from 'react-native-vector-icons/MaterialIcons';
 import IconMC from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconA from 'react-native-vector-icons/AntDesign';
 import IconI from 'react-native-vector-icons/Ionicons';
 import IconF from 'react-native-vector-icons/FontAwesome5';
 
-import {ActionCreators} from '../../../Actions';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
+import { ActionCreators } from '../../../Actions';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import localize from '../../../translation';
 import Responsive from 'react-native-lightweight-responsive';
-import {TabView, SceneMap} from 'react-native-tab-view';
+import { TabView, SceneMap } from 'react-native-tab-view';
 import Animated from 'react-native-reanimated';
 
 const DATAActivity = [
@@ -141,7 +141,7 @@ const optionsData = [
   },
 ];
 
-function ListItemActivity({item}) {
+function ListItemActivity({ item }) {
   return (
     <View>
       {renderIf(!item.recentActivityCheck)(
@@ -155,11 +155,11 @@ function ListItemActivity({item}) {
             marginTop: '4%',
           }}>
           <Image
-            style={{width: 20, height: 20, marginRight: '3%'}}
+            style={{ width: 20, height: 20, marginRight: '3%' }}
             source={item.image}
           />
           <View style={{}}>
-            <Text style={{fontSize: 15, color: '#000'}}>{item.title}</Text>
+            <Text style={{ fontSize: 15, color: '#000' }}>{item.title}</Text>
           </View>
         </View>,
       )}
@@ -167,7 +167,7 @@ function ListItemActivity({item}) {
   );
 }
 
-function ListItemDetailActivity({item}) {
+function ListItemDetailActivity({ item }) {
   return (
     <View>
       {renderIf(!item.recentActivityCheck)(
@@ -181,11 +181,11 @@ function ListItemDetailActivity({item}) {
             marginTop: '4%',
           }}>
           <Image
-            style={{width: 20, height: 20, marginRight: '3%'}}
+            style={{ width: 20, height: 20, marginRight: '3%' }}
             source={item.image}
           />
           <View style={{}}>
-            <Text style={{fontSize: 15, color: '#000'}}>{item.title}</Text>
+            <Text style={{ fontSize: 15, color: '#000' }}>{item.title}</Text>
           </View>
         </View>,
       )}
@@ -212,7 +212,7 @@ const FirstRoute = () => (
         />
       )}
       data={DATAActivity}
-      renderItem={({item}) => (
+      renderItem={({ item }) => (
         <TouchableOpacity
         //	onPress={() => actionActivity(item)}
         >
@@ -239,12 +239,12 @@ const SecondRoute = props => (
         />
       )}
       data={optionsData}
-      renderItem={({item}) => (
+      renderItem={({ item }) => (
         <TouchableOpacity
           // onPress={() => props.navigation.navigate('Meals')}
-          style={{marginHorizontal: '5%', width: '93%', marginVertical: '3%'}}>
-          <View style={{flexDirection: 'column'}}>
-            <Text style={{color: '#000', fontSize: 20, marginBottom: 2}}>
+          style={{ marginHorizontal: '5%', width: '93%', marginVertical: '3%' }}>
+          <View style={{ flexDirection: 'column' }}>
+            <Text style={{ color: '#000', fontSize: 20, marginBottom: 2 }}>
               {item.text}
             </Text>
             <Text
@@ -257,7 +257,7 @@ const SecondRoute = props => (
               {item.subText}
             </Text>
           </View>
-          <View style={{position: 'absolute', right: 20}}>
+          <View style={{ position: 'absolute', right: 20 }}>
             <Text>{item.kcal}</Text>
           </View>
         </TouchableOpacity>
@@ -282,12 +282,12 @@ const ThirdRoute = navigation => (
         />
       )}
       data={optionsData}
-      renderItem={({item}) => (
+      renderItem={({ item }) => (
         <TouchableOpacity
           onPress={() => this.abc()}
-          style={{marginHorizontal: '5%', width: '93%', marginVertical: '3%'}}>
-          <View style={{flexDirection: 'column'}}>
-            <Text style={{color: '#000', fontSize: 20, marginBottom: 2}}>
+          style={{ marginHorizontal: '5%', width: '93%', marginVertical: '3%' }}>
+          <View style={{ flexDirection: 'column' }}>
+            <Text style={{ color: '#000', fontSize: 20, marginBottom: 2 }}>
               {item.text}
             </Text>
             <Text
@@ -300,7 +300,7 @@ const ThirdRoute = navigation => (
               {item.subText}
             </Text>
           </View>
-          <View style={{position: 'absolute', right: 20}}>
+          <View style={{ position: 'absolute', right: 20 }}>
             <Text>{item.kcal}</Text>
           </View>
         </TouchableOpacity>
@@ -310,10 +310,10 @@ const ThirdRoute = navigation => (
   </View>
 );
 const FourthRoute = () => (
-  <View style={[styles.container, {backgroundColor: '#673ab7'}]} />
+  <View style={[styles.container, { backgroundColor: '#673ab7' }]} />
 );
 const FifthRoute = () => (
-  <View style={[styles.container, {backgroundColor: '#673ab7'}]} />
+  <View style={[styles.container, { backgroundColor: '#673ab7' }]} />
 );
 
 class AddProduct extends Component {
@@ -372,13 +372,13 @@ class AddProduct extends Component {
     alert('TODO');
   }
 
-  _handleIndexChange = index => this.setState({index});
+  _handleIndexChange = index => this.setState({ index });
 
   _renderTabBar = props => {
     const inputRange = props.navigationState.routes.map((x, i) => i);
 
     return (
-      <View style={{flexDirection: 'row'}}>
+      <View style={{ flexDirection: 'row' }}>
         {props.navigationState.routes.map((route, i) => {
           const color = Animated.color(
             Animated.round(
@@ -400,11 +400,11 @@ class AddProduct extends Component {
                 alignItems: 'center',
                 padding: 13,
               }}
-              onPress={() => this.setState({index: i})}>
+              onPress={() => this.setState({ index: i })}>
               <View>
                 <Text>{route.icon}</Text>
               </View>
-              <Animated.Text style={{color, fontSize: 12}}>
+              <Animated.Text style={{ color, fontSize: 12 }}>
                 {route?.title}
               </Animated.Text>
             </TouchableOpacity>
@@ -423,7 +423,7 @@ class AddProduct extends Component {
   });
 
   render() {
-    const {navigate} = this.props.navigation;
+    const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
         <View
@@ -455,7 +455,7 @@ class AddProduct extends Component {
               justifyContent: 'center',
               alignSelf: 'center',
             }}>
-            <Text style={{color: '#000', fontSize: 19}}>Stable Food</Text>
+            <Text style={{ color: '#000', fontSize: 19 }}>Stable Food</Text>
           </View>
         </View>
 

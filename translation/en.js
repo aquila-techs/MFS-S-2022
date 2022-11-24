@@ -87,13 +87,13 @@ export default {
   // Packages
 
   basic: 'Basic Subscription',
-  perMonth: 'Monthly',
+  perMonth: '1 month pro',
 
   standard: 'Standard Subscription',
-  perMonthStandard: '6 Months',
+  perMonthStandard: '6 months pro',
 
   professional: 'Pro Subscription',
-  perMonthProfessional: '1 Year',
+  perMonthProfessional: '12 months pro',
 
   videoLoading: "Video is loading",
   pleaseWait: "Please Wait...",
@@ -298,6 +298,12 @@ export default {
   FirstStep: 'First Step',
   DIFFICULTYLEVEL: 'Difficulty Level',
   FullBody: 'Full Body',
+
+  commonQuestion1Heading: '1. What does pro include?',
+  commonQuestion1Desc: 'You get access to all our workout programs and recipes with new uploads every week.',
+
+  commonQuestion1Heading2: '2. How can I stop my subscription?',
+  commonQuestion1Desc2: "You can easily stop any subscription at any time under ‘unlock My Fit Spot Pro’, in settings. You can continue to use My Fit Spot Pro until the period it expires (even after discontinuation).",
 
 
   // loseweight: 'Lose weight',

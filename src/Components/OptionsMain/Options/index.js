@@ -135,7 +135,7 @@ class Options extends React.Component {
         })
           .then((response) => response.json())
           .then((responseJson) => {
-
+            alert(JSON.stringify(responseJson))
             this.setState({ profileLoader: false })
 
             let photoName = response.fileName === undefined ? "abc.jpg" : response.fileName;
@@ -704,6 +704,13 @@ class Options extends React.Component {
                 </View>
               </View>
             </View>
+
+            <TouchableOpacity
+              style={[styles.buttonContainer, styles.loginButton]}
+              onPress={() => this.props.navigation.navigate("PackageMeal")}
+            >
+              <Text style={styles.loginText}>{i18n.t('unlock')}</Text>
+            </TouchableOpacity>
 
             {
               this.state.referrelUse == 'false' ?

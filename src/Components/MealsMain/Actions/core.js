@@ -1,6 +1,7 @@
 import * as types from './types';
 import { API_URL } from '../../../Actions';
 import RNFetchBlob from 'rn-fetch-blob';
+import { Alert } from 'react-native';
 
 export function createStripeCustomer(reqData, token) {
   //alert('createStripeCustomer = '+reqData);
@@ -83,8 +84,11 @@ export function createSubscriptionCustomer(reqData, token) {
       ).then(response => {
         const data = JSON.parse(response.data);
 
-        //     alert("Create Subscription Customer = " + JSON.stringify(data))
-        if (!data.status) {
+        console.log('+++++++++++++')
+        console.log(data)
+        console.log('+++++++++++++')
+
+        if (data.status == true) {
 
           let condition = 'Subcribe';
           dispatch(setUserSubscription(true, condition));
@@ -92,12 +96,31 @@ export function createSubscriptionCustomer(reqData, token) {
             status: true,
             data: data,
           });
+
         } else {
+          Alert.alert('Sorry!',"Subscription has been failed please try again in a while.")
           resolve({
             status: false,
             data: data,
           });
         }
+
+        // if (!data.status) {
+
+        //   let condition = 'Subcribe';
+        //   dispatch(setUserSubscription(true, condition));
+        //   resolve({
+        //     status: true,
+        //     data: data,
+        //   });
+        // } else {
+        //   resolve({
+        //     status: false,
+        //     data: data,
+        //   });
+        // }
+
+
       });
     });
   };
